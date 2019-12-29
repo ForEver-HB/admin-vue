@@ -1,17 +1,11 @@
 <template>
-    <div>
-        <p>home组件</p>
-    </div>
+  <div>
+    <p>home组件</p>
+  </div>
 </template>
 
 <script>
-
-export default {
-    
-}
+export default {}
 </script>
 
-<style>
-
-</style>
-
+<style></style>

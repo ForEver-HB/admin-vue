@@ -13,8 +13,8 @@
         </div>
       </el-col> -->
       <el-col :offset="16" :span="4">
-        <div class="grid-content bg-purple">
-          <a href="#">退出</a>
+        <div class="grid-content bg-purple closeToLogin">
+          <a href="#" @click.prevent="Logout">退出</a>
         </div>
       </el-col>
     </el-row>
@@ -40,34 +40,61 @@ export default {
   // },
   data () {
     return {}
+  },
+  methods: {
+    Logout () {
+      this.$confirm('确认退出吗?', '退出提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      })
+        .then(() => {
+          window.localStorage.removeItem('admin-token')
+          this.$router.push({
+            name: 'login'
+          })
+          this.$message({
+            type: 'success',
+            message: '退出登录成功!'
+          })
+        })
+    }
   }
 }
 </script>
 
 <style>
-  .container {
-    height: 100%;
-  }
-  .header {
-    line-height: 60px;
-    background-color: #000;
-    border-bottom: 1px solid gold;
-  }
-  .bg-purple img{
-    height: 59px;
-    width: auto
-  }
-  .company_name {
-    font-size: 22px;
-    font-weight: bold;
-    color: #fff;
-    font-family: '楷书';
-  }
-  .aside {
-    background-color: #D3DCe6;
-  }
-  .main {
-    background-color: #E9EEF3;
-    height: 100%;
-  }
+.container {
+  height: 100%;
+}
+.header {
+  line-height: 60px;
+  background-color: #000;
+  border-bottom: 1px solid gold;
+}
+.bg-purple img {
+  height: 59px;
+  width: auto;
+}
+.company_name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  font-family: "楷书";
+}
+.closeToLogin {
+  text-align: center;
+}
+closeToLogin a {
+  list-style: none;
+  direction: underline;
+  color: #fff;
+}
+.aside {
+  background-color: #d3dce6;
+}
+.main {
+  background-color: #e9eef3;
+  height: 100%;
+}
 </style>

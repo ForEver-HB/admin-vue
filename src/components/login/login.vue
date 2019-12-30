@@ -38,9 +38,13 @@ export default {
       // console.log(res)
       const data = res.data
       if (data.meta.status === 200) {
-        window.localStorage.setItem('admin-token', JSON.stringify(data.data.token))
+        window.localStorage.setItem('admin-token', JSON.stringify(data.data))
         this.$router.push({
           name: 'home'
+        })
+        this.$message({
+          type: 'success',
+          message: '登录成功!'
         })
       }
     }

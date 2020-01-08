@@ -22,22 +22,22 @@
   <el-container class='container'>
     <el-aside class='aside' width='200px'>
       <el-menu
-      default-active='2'
-      class='el-menu-vertical-demo aside-menu'
-      @open='handleOpen'
-      @close='handleClose'
-      router="true"
-      background-color='#545c64'
-      text-color='#fff'
-      :unique-opened='true'
-      active-text-color='#ffd04b'>
-      <el-submenu index='1'>
-        <template slot='title'>
-          <i class='el-icon-location'></i>
-          <span>用户管理</span>
-        </template>
-        <el-menu-item index='/users'>用户列表</el-menu-item>
-      </el-submenu>
+        default-active='2'
+        class='el-menu-vertical-demo aside-menu'
+        @open='handleOpen'
+        @close='handleClose'
+        background-color='#545c64'
+        text-color='#fff'
+        :unique-opened='true'
+        router='true'
+        active-text-color='#ffd04b'>
+        <el-submenu index='1'>
+          <template slot='title'>
+            <i class='el-icon-location'></i>
+            <span>用户管理</span>
+          </template>
+          <el-menu-item index='/users'>用户列表</el-menu-item>
+        </el-submenu>
       <el-submenu index='2'>
         <template slot='title'>
           <i class='el-icon-location'></i>
@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import { removeUserInfo } from '@/assets/js/auth'
 export default {
   // 作废的测试文件
   // beforeCreate () {
@@ -100,7 +101,8 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        window.localStorage.removeItem('admin-token')
+        // window.localStorage.removeItem('admin-token')
+        removeUserInfo()
         this.$router.push({
           name: 'login'
         })

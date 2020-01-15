@@ -41,6 +41,7 @@ export default {
       // 3. 发请求执行登陆操作
       // 4. 根据响应做交互
       const res = await this.$http.post('/login', this.userForm)
+      console.log(res)
       const data = res.data
       if (data.meta.status === 200) {
         // 登陆成功，我们把服务器发给我们当前登陆的用户信息存储到本地存储
